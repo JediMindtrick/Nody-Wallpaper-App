@@ -28,7 +28,7 @@ setInterval(function(){
 		mySockets[k].write(toSend);
 	}
 	
-},2000);
+},20000);
 
 
 var server = net.createServer(function(socket){
@@ -53,7 +53,7 @@ function(someDir)
 		var name = fileList[i].toLowerCase();
 		var split = name.split('.');
 		var extension = split[split.length - 1];
-		console.log('extension is: ' + extension);
+		//console.log('extension is: ' + extension);
 		if(extension == 'png' || extension == 'jpg' || extension == 'gif')
 		{
 			toReturn.push('"' + someDir + '/' + fileList[i] + '"');
@@ -79,30 +79,30 @@ function(someDir)
 var listFiles = function(someDir){
 	var toReturn = [];
 	
-	console.log('listing files for: ' + someDir);
+	//console.log('listing files for: ' + someDir);
 	
 	var files = fs.readdirSync(someDir);
 	
 	for(var i = 0, l = files.length; i < l; i++){
-		console.log('listFiles(): object found: ' + files[i]);
-		console.log('listFiles(): running stat on: ' + someDir + '/' + files[i]);
+		//console.log('listFiles(): object found: ' + files[i]);
+		//console.log('listFiles(): running stat on: ' + someDir + '/' + files[i]);
 		
    		var myStat = fs.statSync(someDir + '/' + files[i]);
 		//var myStat = fs.statSync(files[i]);
         if (myStat.isFile()) {
-			console.log('object is file: ' + files[i]);
+			//console.log('object is file: ' + files[i]);
 			toReturn.push(files[i]);
 		}
 		else if (myStat.isDirectory())
 		{
-			console.log('object is directory: ' + files[i]);
+			//console.log('object is directory: ' + files[i]);
 		}
 		else{
-			console.log('object is neither: ' + files[i]);
+			//console.log('object is neither: ' + files[i]);
 		}
     }
 	
-	console.log('listFiles returning ' + toReturn);
+	//console.log('listFiles returning ' + toReturn);
 	
 	return toReturn;
 };
@@ -118,8 +118,8 @@ var listDirectories = function(someDir){
 		//console.log('listDirectories(): object found: ' + files[i]);
 		//console.log('listDirectories(): running stat on: ' + someDir + '/' + files[i]);
 		
-   		//var myStat = fs.statSync(someDir + '/' + files[i]);
-		var myStat = fs.statSync(files[i]);
+   		var myStat = fs.statSync(someDir + '/' + files[i]);
+		//var myStat = fs.statSync(files[i]);
         if (myStat.isDirectory()) {
 			//console.log('directory found: ' + files[i]);
 			//console.log(files[i]);
