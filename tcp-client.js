@@ -1,3 +1,5 @@
+/*This is an extraneous comment to cause a change.  Learning Aptana+git integration...*/
+
 var net = require('net');
 var sys = require('sys')
 var exec = require('child_process').exec;
